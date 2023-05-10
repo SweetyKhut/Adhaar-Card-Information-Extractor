@@ -6,8 +6,9 @@ import re
 import streamlit as st
 from PIL import Image
 
-# Set your Tesseract OCR engine path
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# For local hosting, uncomment the below line and set your local Tesseract OCR engine path
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'   #comment this line while hosting locally
 
 
 def image_processing(image):
@@ -70,6 +71,13 @@ def extractText(ocr_text):
         st.write("Gender not detected.")
 
 
+st.set_page_config(
+page_title = 'Aadhaar Information Extractor',
+layout = 'centered',
+)
+ 
+st.markdown("<h1 style='text-align: center; color: white;'>Aadhaar Card Information Extractor</h1>", unsafe_allow_html=True)
+    
 scale = 0.5
 
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -101,4 +109,3 @@ if input_image is not None:
     ocr_text = pytesseract.image_to_string(processed)
 
     extractText(ocr_text)
-
