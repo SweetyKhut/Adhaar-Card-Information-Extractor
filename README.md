@@ -1,1 +1,1 @@
-# Admit-Card-Information-Extractor
+# Adhaar-Card-Information-Extractor
